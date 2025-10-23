@@ -1,0 +1,110 @@
+:root {
+    --max-width: 980px;
+    --card-padding: clamp(1rem, 2.5vw, 2rem);
+    --shadow: 0 8px 20px rgba(10, 15, 30, 0.06);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg), #eef3fb);
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.site-header {
+    text-align: center;
+    margin-bottom: 1rem;
+    background-color: rgb(103, 147, 163);
+    color: white;
+    padding: 0px 20px;
+    border-radius: 20px;
+    box-shadow: 3px 4px 10px black;
+}
+
+.site-header .lead {
+    color: var(--muted);
+    margin-top: 0.25rem
+}
+
+.card {
+    background: #ffffff;
+    width: 100%;
+    max-width: var(--max-width);
+    border-radius: 12px;
+    padding: var(--card-padding);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    margin: 2rem auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1rem;
+}
+
+.form-grid fieldset {
+    border: 1px solid #e6eefc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #fafafa;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-grid fieldset.personal {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap)
+}
+
+.form-grid fieldset.academic {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap)
+}
+
+.form-grid fieldset[aria-labelledby="address-legend"] {
+    grid-column: 1 / -1;
+}
+
+.field-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.field-row.full-width {
+    grid-column: 1 / -1
+}
+
+.field-row label {
+    font-weight: 600;
+    font-size: 0.95rem
+}
+
+.helper {
+    font-size: 0.82rem;
+    color: var(--muted)
+}

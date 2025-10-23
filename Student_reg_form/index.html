@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Student Registration — Department of Computer Science</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Department of Computer Science</h1>
+    <p class="lead">Student Registration Form</p>
+  </header>
+
+  <main>
+
+    <form class="card form-grid" action="#" method="post" novalidate>
+
+      <fieldset class="personal" aria-labelledby="personal-legend">
+        <legend id="personal-legend">Personal information</legend>
+
+        <div class="field-row">
+          <label for="firstName">First name <span aria-hidden="true">*</span></label>
+          <input id="firstName" name="firstName" type="text" placeholder="e.g. Ayesha" required aria-required="true">
+          <small id="firstNameHelp" class="helper">Given name</small>
+        </div>
+
+        <div class="field-row">
+          <label for="lastName">Last name <span aria-hidden="true">*</span></label>
+          <input id="lastName" name="lastName" type="text" placeholder="e.g. Khan" required aria-required="true">
+          <small class="helper">Family name / surname</small>
+        </div>
+
+        <div class="field-row">
+          <label for="studentId">Student ID <span aria-hidden="true">*</span></label>
+          <input id="studentId" name="studentId" type="text" placeholder="e.g. CS2025-001" pattern="[A-Za-z0-9\-]+" title="Alphanumeric and dashes only" required aria-describedby="studentIdHelp">
+          <small id="studentIdHelp" class="helper">Alphanumeric (dashes allowed)</small>
+        </div>
+
+        <div class="field-row">
+          <label for="dob">Date of birth <span aria-hidden="true">*</span></label>
+          <input id="dob" name="dob" type="date" required>
+        </div>
+
+        <div class="field-row">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input id="email" name="email" type="email" placeholder="you@example.edu" required>
+        </div>
+
+        <div class="field-row">
+          <label for="phone">Phone <span aria-hidden="true">*</span></label>
+          <input id="phone" name="phone" type="tel" placeholder="+92 300 0000000" pattern="\+?[0-9\s\-]{7,}" title="Include country code if possible" required>
+        </div>
+
+      </fieldset>
+
+      <fieldset class="academic" aria-labelledby="academic-legend">
+        <legend id="academic-legend">Academic information</legend>
+
+        <div class="field-row full-width">
+          <label for="program">Program / Department <span aria-hidden="true">*</span></label>
+          <select id="program" name="program" required>
+            <option value="">Select a program</option>
+            <optgroup label="Undergraduate">
+              <option value="bs_cs">BS Computer Science</option>
+              <option value="bs_se">BS Software Engineering</option>
+              <option value="bs_it">BS Information Technology</option>
+            </optgroup>
+            <optgroup label="Graduate">
+              <option value="ms_cs">MS Computer Science</option>
+              <option value="ms_se">MS Software Engineering</option>
+            </optgroup>
+          </select>
+          <small class="helper">Choose your enrolled program</small>
+        </div>
+
+        <div class="field-row">
+          <label for="year">Year / Semester <span aria-hidden="true">*</span></label>
+          <select id="year" name="year" required>
+            <option value="">Select year/semester</option>
+            <option>1 / Semester 1</option>
+            <option>1 / Semester 2</option>
+            <option>2 / Semester 1</option>
+            <option>2 / Semester 2</option>
+            <option>3 / Semester 1</option>
+            <option>3 / Semester 2</option>
+            <option>4 / Semester 1</option>
+            <option>4 / Semester 2</option>
+          </select>
+        </div>
+
+        <fieldset class="fieldset-inline" aria-labelledby="gender-legend">
+          <legend id="gender-legend">Gender</legend>
+          <label><input type="radio" name="gender" value="female" required> Female</label>
+          <label><input type="radio" name="gender" value="male"> Male</label>
+          <label><input type="radio" name="gender" value="other"> Other</label>
+        </fieldset>
+
+        <fieldset class="fieldset-inline" aria-labelledby="enroll-legend">
+          <legend id="enroll-legend">Enrollment type</legend>
+          <label><input type="radio" name="enrollType" value="full" required> Full-time</label>
+          <label><input type="radio" name="enrollType" value="part"> Part-time</label>
+        </fieldset>
+
+        <div class="field-row full-width">
+          <label>Courses to register (select all that apply)</label>
+          <div class="checkbox-grid" role="group" aria-label="Courses to register">
+            <label><input type="checkbox" name="courses" value="cs101"> CS101 - Introduction to Programming</label>
+            <label><input type="checkbox" name="courses" value="cs102"> CS102 - Data Structures</label>
+            <label><input type="checkbox" name="courses" value="cs201"> CS201 - Algorithms</label>
+            <label><input type="checkbox" name="courses" value="cs301"> CS301 - Operating Systems</label>
+            <label><input type="checkbox" name="courses" value="cs401"> CS401 - Machine Learning</label>
+            <label><input type="checkbox" name="courses" value="cs402"> CS402 - Computer Vision</label>
+          </div>
+        </div>
+
+        <div class="field-row full-width">
+          <label for="campus">Preferred campus</label>
+
+          <input list="campuses" id="campus" name="campus" placeholder="Choose or type a campus">
+          <datalist id="campuses">
+            <option value="Main Campus"></option>
+            <option value="City Campus"></option>
+            <option value="North Campus"></option>
+          </datalist>
+        </div>
+
+        <div class="field-row full-width">
+          <label for="photo">Profile photo</label>
+          <input id="photo" name="photo" type="file" accept="image/*" aria-describedby="photoHelp">
+          <small id="photoHelp" class="helper">JPEG/PNG. Max 2MB recommended.</small>
+        </div>
+
+      </fieldset>
+
+      <fieldset aria-labelledby="address-legend">
+        <legend id="address-legend">Contact & account</legend>
+
+        <div class="field-row full-width">
+          <label for="address">Address</label>
+          <textarea id="address" name="address" rows="3" placeholder="Street, City, Country"></textarea>
+        </div>
+
+        <div class="field-row">
+          <label for="password">Password <span aria-hidden="true">*</span></label>
+          <input id="password" name="password" type="password"
+                 pattern="(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}"
+                 title="Minimum 8 characters, include one uppercase letter, one number and one special character."
+                 required aria-describedby="pwdHelp">
+          <small id="pwdHelp" class="helper">Min 8 chars, 1 uppercase, 1 number, 1 special</small>
+        </div>
+
+        <div class="field-row">
+          <label for="confirmPassword">Confirm password <span aria-hidden="true">*</span></label>
+          <input id="confirmPassword" name="confirmPassword" type="password" pattern="(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}" title="Repeat the password exactly" required>
+        </div>
+
+        <div class="field-row full-width">
+          <label class="terms"><input type="checkbox" id="agree" name="agree" required> I agree to the <a href="#">terms and conditions</a> <span aria-hidden="true">*</span></label>
+        </div>
+
+      </fieldset>
+
+
+      <div class="form-actions full-width">
+        <button type="reset" class="btn btn-outline">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+
+    </form>
+
+  </main>
+
+  <footer class="site-footer">
+    <small>Department of Computer Science — Student Registration Form</small>
+  </footer>
+</body>
+</html>
