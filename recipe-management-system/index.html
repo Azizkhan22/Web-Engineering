@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🍳 Recipe Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>🍳 Recipe Management System</h1>
+    <p class="subtitle">Create, View, Edit, and Manage Your Favorite Recipes</p>
+  </header>
+
+  <section class="form-section">
+    <form id="recipeForm">
+      <h2>Add a New Recipe</h2>
+      <input type="text" id="title" placeholder="Recipe Title" required />
+      <textarea id="ingredients" placeholder="Ingredients" required></textarea>
+      <textarea id="instructions" placeholder="Instructions" required></textarea>
+      <input type="file" id="image" accept="image/*" />
+      <button type="submit" class="add-btn">➕ Add Recipe</button>
+    </form>
+  </section>
+
+
+  <section class="search-section">
+    <input type="text" id="search" placeholder="🔍 Search recipes by title or ingredients..." />
+  </section>
+
+  <section id="recipeList"></section>
+
+  <footer>
+    <p>Made by Aziz Ullah</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
