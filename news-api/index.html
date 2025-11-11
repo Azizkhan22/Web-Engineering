@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>News Fetcher — Cards</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container" role="main">
+    <header>
+      <div>
+        <h1>Live News Fetcher</h1>
+        <p>Click <strong>Fetch News</strong> to load latest headlines (10 max)</p>
+      </div>
+
+      <div class="controls" aria-hidden="false">
+        <button id="fetchBtn" class="btn btn-primary">🔄 Fetch News</button>
+        <button id="clearBtn" class="btn btn-ghost">🧹 Clear</button>
+        <div id="status" class="status">Ready</div>
+      </div>
+    </header>
+
+    <section id="results" aria-live="polite">
+      <div class="empty">No news loaded yet. Click <strong>Fetch News</strong>.</div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
