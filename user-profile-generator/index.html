@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async Await Profile Loader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white p-10">
+    <div class="max-w-xl mx-auto space-y-6">
+        <h1 class="text-3xl font-bold">User Profile Loader</h1>
+
+        <button id="load-btn" class="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700">
+            Load User Profile
+        </button>
+
+        <div class="p-4 bg-gray-800 rounded">
+            <h2 class="text-xl font-semibold">User Information</h2>
+            <p id="user-name" class="mt-2">Name: ---</p>
+            <p id="user-email" class="mt-1">Email: ---</p>
+        </div>
+
+        <div class="p-4 bg-gray-800 rounded">
+            <h2 class="text-xl font-semibold">Bio</h2>
+            <p id="user-bio" class="mt-2">---</p>
+        </div>
+
+        <p id="status" class="text-yellow-400"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
