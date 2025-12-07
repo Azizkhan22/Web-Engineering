@@ -1,0 +1,12 @@
+{
+  "record": {
+    "monthly_revenue": [
+      {"month": "Jan", "amount": 18000},
+      {"month": "Feb", "amount": 22000},
+      {"month": "Mar", "amount": 19500},
+      {"month": "Apr", "amount": 25000},
+      {"month": "May", "amount": 27000},
+      {"month": "Jun", "amount": 30000}
+    ]
+  }
+}
