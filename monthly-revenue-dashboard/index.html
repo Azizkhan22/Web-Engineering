@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Monthly Revenue Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+
+<body class="bg-gray-900 text-white p-10">
+    <div class="max-w-3xl mx-auto space-y-6">
+        <h1 class="text-3xl font-bold">Monthly Revenue Tracker</h1>
+
+        <p id="loading" class="text-yellow-300 hidden">Loading data...</p>
+        <p id="error" class="text-red-400 hidden">ERROR: Failed to load data. Check console.</p>
+
+        <div class="p-4 bg-gray-800 rounded shadow-lg">
+            <canvas id="revenueChart"></canvas>
+        </div>
+
+        <button onclick="fetchAndVisualizeData()" 
+            class="px-4 py-2 bg-indigo-600 rounded hover:bg-indigo-700">
+            Load Revenue Data
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
