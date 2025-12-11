@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application Wizard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-10">
+  <div class="max-w-xl mx-auto bg-white p-8 rounded shadow">
+
+    <div class="flex justify-between mb-8">
+      <div id="indicator-1" class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-gray-400">1</div>
+      <div id="indicator-2" class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-gray-400">2</div>
+      <div id="indicator-3" class="w-10 h-10 rounded-full flex items-center justify-center border-2 border-gray-400">3</div>
+    </div>
+
+    <div id="step-1">
+      <h2 class="text-xl font-bold mb-4">Step 1: Personal Info</h2>
+
+      <label class="block mb-3">
+        Name:
+        <input id="name" type="text" class="border p-2 w-full rounded">
+        <p id="error-name" class="text-red-500 text-sm hidden"></p>
+      </label>
+
+      <label class="block mb-3">
+        Email:
+        <input id="email" type="email" class="border p-2 w-full rounded">
+        <p id="error-email" class="text-red-500 text-sm hidden"></p>
+      </label>
+
+      <button onclick="nextStep()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+    </div>
+
+    <div id="step-2" class="hidden">
+      <h2 class="text-xl font-bold mb-4">Step 2: Account Details</h2>
+
+      <label class="block mb-3">
+        Username:
+        <input id="username" type="text" class="border p-2 w-full rounded">
+        <p id="error-username" class="text-red-500 text-sm hidden"></p>
+      </label>
+
+      <label class="block mb-3">
+        Password:
+        <input id="password" type="password" class="border p-2 w-full rounded">
+        <p id="error-password" class="text-red-500 text-sm hidden"></p>
+      </label>
+
+      <div class="flex justify-between mt-4">
+        <button onclick="prevStep()" class="bg-gray-500 text-white px-4 py-2 rounded">Previous</button>
+        <button onclick="nextStep()" class="bg-blue-600 text-white px-4 py-2 rounded">Next</button>
+      </div>
+    </div>
+
+    <div id="step-3" class="hidden">
+      <h2 class="text-xl font-bold mb-4">Step 3: Review & Submit</h2>
+
+      <div class="mb-4">
+        <p><strong>Name:</strong> <span id="review-name"></span></p>
+        <p><strong>Email:</strong> <span id="review-email"></span></p>
+        <p><strong>Username:</strong> <span id="review-username"></span></p>
+      </div>
+
+      <div class="flex justify-between">
+        <button onclick="prevStep()" class="bg-gray-500 text-white px-4 py-2 rounded">Previous</button>
+        <button onclick="handleSubmission()" class="bg-green-600 text-white px-4 py-2 rounded">Submit</button>
+      </div>
+    </div>
+
+    <div id="success-message" class="hidden text-center">
+      <h2 class="text-2xl font-bold text-green-600 mb-4">Application Submitted!</h2>
+      <p class="text-lg">Your Application ID: <span id="final-id" class="font-mono"></span></p>
+    </div>
+
+  </div>
+
+  <script>
+    let currentStep = 1;
+
+
+    const formData = {
+      name: "",
+      email: "",
+      username: "",
+      password: ""
+    };
+
+    function showStep(step) {
+      currentStep = step;
+
+      document.getElementById("step-1").classList.add("hidden");
+      document.getElementById("step-2").classList.add("hidden");
+      document.getElementById("step-3").classList.add("hidden");
+
+      document.getElementById(`step-${step}`).classList.remove("hidden");
+
+
+      for (let i = 1; i <= 3; i++) {
+        document.getElementById(`indicator-${i}`).classList.remove("bg-blue-500", "text-white");
+      }
+      document.getElementById(`indicator-${step}`).classList.add("bg-blue-500", "text-white");
+    }
+
+    function nextStep() {
+      if (!validateStep(currentStep)) return;
+
+      if (currentStep === 2) {
+        collectData();
+        updateReview();
+      }
+
+      showStep(currentStep + 1);
+    }
+
+    function prevStep() {
+      showStep(currentStep - 1);
+    }
+
+    function validateStep(step) {
+      clearErrors();
+
+      if (step === 1) {
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+
+        let valid = true;
+
+        if (name === "") {
+          showError("error-name", "Name cannot be empty.");
+          valid = false;
+        }
+        if (!email.includes("@") || !email.includes(".")) {
+          showError("error-email", "Email format is invalid.");
+          valid = false;
+        }
+        return valid;
+      }
+
+      if (step === 2) {
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        let valid = true;
+
+        if (username.length < 5) {
+          showError("error-username", "Username must be at least 5 characters.");
+          valid = false;
+        }
+        if (password.length < 8) {
+          showError("error-password", "Password must be at least 8 characters.");
+          valid = false;
+        }
+        return valid;
+      }
+
+      return true;
+    }
+
+    function showError(id, msg) {
+      const el = document.getElementById(id);
+      el.innerText = msg;
+      el.classList.remove("hidden");
+    }
+
+    function clearErrors() {
+      document.querySelectorAll(".text-red-500").forEach(e => e.classList.add("hidden"));
+    }
+
+    function collectData() {
+      formData.name = document.getElementById("name").value.trim();
+      formData.email = document.getElementById("email").value.trim();
+      formData.username = document.getElementById("username").value.trim();
+      formData.password = document.getElementById("password").value.trim();
+    }
+
+    function updateReview() {
+      document.getElementById("review-name").innerText = formData.name;
+      document.getElementById("review-email").innerText = formData.email;
+      document.getElementById("review-username").innerText = formData.username;
+    }
+
+    function submitApplication(data) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log("Application Submitted:", data);
+          resolve({
+            success: true,
+            id: Math.random().toString(36).substring(2, 9)
+          });
+        }, 2000);
+      });
+    }
+
+    async function handleSubmission() {
+      try {
+        const result = await submitApplication(formData);
+
+        document.getElementById("final-id").innerText = result.id;
+
+        document.getElementById("step-1").classList.add("hidden");
+        document.getElementById("step-2").classList.add("hidden");
+        document.getElementById("step-3").classList.add("hidden");
+        document.getElementById("success-message").classList.remove("hidden");
+
+      } catch (err) {
+        alert("Submission failed. Try again.");
+      }
+    }
+
+    showStep(1);
+  </script>
+
+</body>
+</html>
